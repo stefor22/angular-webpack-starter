@@ -1,17 +1,23 @@
 export const views: Object[] = [
   {
-    name: 'Dashboard',
+    name: '首页',
     icon: 'home',
     link: ['']
   },
   {
-    name: 'Lazy',
-    icon: 'file_download',
+    name: '案例',
+    icon: 'example',
     link: ['lazy']
   },
   {
-    name: 'Bad Link',
-    icon: 'error',
+    name: '快照',
+    icon: 'camera',
     link: ['wronglink']
+  }
+  ,
+  {
+    name: '主材',
+    icon: 'material',
+    link: ['wronglink2']
   }
 ];

@@ -33,6 +33,8 @@ import { AppComponent } from './app.component';
 
 import { AppState } from './reducers';
 
+import {IMPORTS, PROVIDERS} from './app.my-module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,10 +50,14 @@ import { AppState } from './reducers';
       useHash: false,
       // preloadingStrategy: PreloadAllModules
     }),
+    ...IMPORTS,
   ],
   bootstrap: [AppComponent],
   exports: [AppComponent],
-  providers: [APP_PROVIDERS]
+  providers: [
+    APP_PROVIDERS,
+    ...PROVIDERS,
+  ]
 })
 
 export class AppModule {

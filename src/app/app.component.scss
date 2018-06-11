@@ -1,7 +1,27 @@
-#my-page-card {
-  min-height: 100%;
+
+.main-footer {
+  position: fixed;
+  bottom: 0;
+  width: 7.50rem;
+  height: 0.98rem;
+  background-color: #fff;
+  .footer-list {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    a.footerlist-item {
+      height: 0.98rem;
+      img {
+        width: 0.47rem;
+      }
+      .mat-list-item-content {
+        flex-direction: column;
+        justify-content: flex-end;
+        span {
+          font-size: 0.014rem;
+        }
+      }
+    }
+  }
 }
 
-ul, li{
-  display: inline;
-}

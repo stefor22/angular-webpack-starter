@@ -1,69 +1,72 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
-import { TransferHttp } from '../../modules/transfer-http/transfer-http';
 
 import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
-import { User } from '../user/user.model';
 
-import * as UserActions from '../user/user.actions';
+import {
+  SwiperConfigInterface,
+  SwiperCoverflowEffectInterface,
+  SwiperComponent,
+  SwiperNavigationInterface
+} from 'ngx-swiper-wrapper';
+
+// 3D 切换效果参数设置
+const coverflowEffectConfig: SwiperCoverflowEffectInterface = {
+  rotate: 0,
+  stretch: 200,
+  depth: 200,
+  modifier: 1,
+  slideShadows: false
+};
+// 前进后退按钮配置
+const navigationConfig: SwiperNavigationInterface = {
+  nextEl: '.swiper-button-next',
+  prevEl: '.swiper-button-prev',
+  hideOnClick: true
+  // disabledClass?: string;
+  // hiddenClass?: string;
+};
 
 @Component({
   selector: 'my-dashboard',
   templateUrl: './dashboard.component.html',
-  styles: [`#my-logout-button { background: #F44336 }`]
+  styleUrls: ['./home.component.scss']
 })
 
 export class DashboardComponent implements OnDestroy, OnInit {
-  destroyed$: Subject<any> = new Subject<any>();
-  form: FormGroup;
-  nameLabel = 'Enter your name';
-  testSub$: Observable<string>;
-  user: User;
-  user$: Observable<User>;
+  config: SwiperConfigInterface;
+
   constructor(
-    private fb: FormBuilder,
-    private http: TransferHttp,
-    private store: Store<AppState>
+    private store: Store<AppState>,
   ) {
-    this.form = fb.group({
-      name: ''
-    });
-    this.user$ = this.store.select(state => state.user.user);
-    this.user$.pipe(takeUntil(this.destroyed$))
-      .subscribe(user => { this.user = user; });
   }
 
   ngOnInit() {
-    this.form.get('name').setValue(this.user.name);
-    if (UNIVERSAL) {
-      this.testSub$ = this.http.get('http://localhost:8000/data').pipe(map(data => {
-        return `${data.greeting} ${data.name}`;
-      }));
-    }
-  }
-
-  clearName() {
-    this.store.dispatch(new UserActions.EditUser(
-      Object.assign({}, this.user, { name: '' }
-      )));
-
-    this.form.get('name').setValue('');
-  }
-
-  logout() {
-    this.store.dispatch(new UserActions.Logout());
-  }
-
-  submitState() {
-    this.store.dispatch(new UserActions.EditUser(
-      Object.assign({}, this.user, { name: this.form.get('name').value }
-      )));
+    this.config = {
+      direction: 'horizontal',
+      // 开启鼠标的抓手状态
+      grabCursor: false,
+      // 被选中的滑块居中，默认居左
+      centeredSlides: true,
+      loop: true,
+      slidesPerView: 'auto',
+      // loopedSlides: 8,
+      autoplay: true,
+      speed: 2000,
+      // 切换效果为 coverflow
+      // effect: 'coverflow',
+      // coverflow 配置
+      coverflowEffect: coverflowEffectConfig,
+      // 前进后退按钮设置
+      // navigation: navigationConfig,
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    };
   }
 
   ngOnDestroy() {
-    this.destroyed$.next();
   }
 }

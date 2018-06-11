@@ -1,2 +1,7 @@
 /* This file is for setting global styles  */
 @import 'variables';
+@import '~swiper/dist/css/swiper.min.css';
+
+body {
+  background-color: #f6f5fa;
+}
