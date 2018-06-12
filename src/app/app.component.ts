@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   mobile = MOBILE;
   sideNavMode = MOBILE ? 'over' : 'side';
   views = views;
+  private currentRoute: string;
 
   constructor(
     private cache: TransferState,
@@ -27,20 +28,8 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.cache.set('cached', true);
-    let a = this.store.pipe(select(fromRoot.getUserLoaded));
-    a.subscribe(l => console.log(l));
+    // this.cache.set('cached', true);
+    this.currentRoute = window.location.pathname.replace(/^\//, '');
   }
 
-  activateEvent(event) {
-    if (ENV === 'development') {
-      console.log('Activate Event:', event);
-    }
-  }
-
-  deactivateEvent(event) {
-    if (ENV === 'development') {
-      console.log('Deactivate Event', event);
-    }
-  }
 }

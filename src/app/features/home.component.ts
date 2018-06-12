@@ -1,6 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
 
 import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
@@ -8,7 +6,6 @@ import { Store } from '@ngrx/store';
 import {
   SwiperConfigInterface,
   SwiperCoverflowEffectInterface,
-  SwiperComponent,
   SwiperNavigationInterface
 } from 'ngx-swiper-wrapper';
 
@@ -20,22 +17,14 @@ const coverflowEffectConfig: SwiperCoverflowEffectInterface = {
   modifier: 1,
   slideShadows: false
 };
-// 前进后退按钮配置
-const navigationConfig: SwiperNavigationInterface = {
-  nextEl: '.swiper-button-next',
-  prevEl: '.swiper-button-prev',
-  hideOnClick: true
-  // disabledClass?: string;
-  // hiddenClass?: string;
-};
 
 @Component({
-  selector: 'my-dashboard',
-  templateUrl: './dashboard.component.html',
+  selector: 'tamu-home',
+  templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 
-export class DashboardComponent implements OnDestroy, OnInit {
+export class HomeComponent implements OnDestroy, OnInit {
   config: SwiperConfigInterface;
 
   constructor(

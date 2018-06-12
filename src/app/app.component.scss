@@ -2,21 +2,26 @@
 .main-footer {
   position: fixed;
   bottom: 0;
-  width: 7.50rem;
+  width: 100%;
   height: 0.98rem;
   background-color: #fff;
   .footer-list {
     display: flex;
     justify-content: space-around;
     padding: 0;
-    a.footerlist-item {
+    div.footerlist-item {
       height: 0.98rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
       img {
-        width: 0.47rem;
+        width: 0.49rem;
       }
       .mat-list-item-content {
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: flex-start;
         span {
           font-size: 0.014rem;
         }

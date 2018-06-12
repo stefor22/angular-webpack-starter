@@ -1,0 +1,54 @@
+<div class="page-wrapper" (click)="byPropagation()">
+  <div class="back-nav">
+    <img src="../../../assets/img/back@2x.png" alt="" class="back-img" (click)="back()">
+    <span>快照</span>
+  </div>
+  <div class="main-container">
+    <div class="top-nav">
+      <div class="room-nav" [ngClass]="showRoom ? 'active': ''" (click)="toggleRoom($event)">
+        <span>客餐厅</span>
+        <img src="../../../assets/img/down@2x.png" alt="" class="nav-img">
+        <div class="slide-menu" *ngIf="showRoom" [@show2hidden]="showRoom">
+          <div class="slide-item active">客餐厅</div>
+          <div class="slide-item">客餐厅</div>
+        </div>
+      </div>
+      <div class="line"></div>
+      <div class="room-nav" [ngClass]="showStyle ? 'active': ''" (click)="toggleStyle($event)">
+        <span>客餐厅</span>
+        <img src="../../../assets/img/down@2x.png" alt="" class="nav-img">
+        <div class="slide-menu" *ngIf="showStyle" [@show2hidden]="showStyle">
+          <div class="slide-item active">客餐厅</div>
+          <div class="slide-item">客餐厅</div>
+        </div>
+      </div>
+    </div>
+    <div class="item-list">
+      <div class="item-box">
+        <img src="../../assets/img/banner1.jpg" alt="" class="item-img">
+        <div class="item-title">
+          <div class="name">护花使者阿斯顿asdsadsadasdsadsadasdas</div>
+          <div class="tags">
+            <span>F4-1235</span>
+            <span>客餐厅</span>
+            <span>中新式</span>
+          </div>
+        </div>
+      </div>
+      <div class="item-box">
+        <img src="../../assets/img/banner1.jpg" alt="" class="item-img">
+        <div class="item-title">
+          <div class="name">护花使者阿斯顿asdsadsadasdsadsadasdas</div>
+          <div class="tags">
+            <span>F4-1235</span>
+            <span>客餐厅</span>
+            <span>中新式</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <contact-us></contact-us>
+</div>
+

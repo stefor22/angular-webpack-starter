@@ -110,7 +110,8 @@ export function resetOnLogout(reducer: ActionReducer<AppState>): ActionReducer<A
 
 export const DEV_REDUCERS: MetaReducer<AppState>[] = [stateSetter, storeFreeze];
 // set in constants.js file of project root
-if (['logger', 'both'].indexOf(STORE_DEV_TOOLS) !== -1) {
-  DEV_REDUCERS.push(storeLogger());
-}
+// 开启router change log
+// if (['logger', 'both'].indexOf(STORE_DEV_TOOLS) !== -1) {
+//   DEV_REDUCERS.push(storeLogger());
+// }
 

@@ -34,6 +34,7 @@ import { AppComponent } from './app.component';
 import { AppState } from './reducers';
 
 import {IMPORTS, PROVIDERS} from './app.my-module';
+import {MyCommonModule} from './common/tamu.common.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {IMPORTS, PROVIDERS} from './app.my-module';
   entryComponents: [APP_ENTRY_COMPONENTS],
   imports: [
     CommonModule,
+    MyCommonModule.forRoot(),
     DEV_SERVER ? [BrowserAnimationsModule, BrowserTransferStateModule] : [],
     HttpClientModule,
     APP_IMPORTS,

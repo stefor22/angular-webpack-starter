@@ -10,11 +10,11 @@ import {
 } from '../modules/transfer-state/browser-transfer-state.module';
 
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './features/dashboard.component';
 import { NotFound404Component } from './not-found404.component';
 import { routes } from './app.routing';
 
 import 'rxjs/add/operator/takeUntil';
+import {HomeComponent} from './features/home.component';
 
 describe('App Component', () => {
   beforeEach(() => {
@@ -27,7 +27,7 @@ describe('App Component', () => {
         RouterTestingModule.withRoutes(routes)
         ],
       providers: [],
-      declarations: [AppComponent, DashboardComponent, NotFound404Component]
+      declarations: [AppComponent, HomeComponent, NotFound404Component]
     });
   });
 

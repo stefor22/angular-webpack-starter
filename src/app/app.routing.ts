@@ -1,11 +1,17 @@
 /* tslint:disable: max-line-length */
 import { Routes } from '@angular/router';
 
-import { DashboardComponent } from './features/dashboard.component';
 import { NotFound404Component } from './not-found404.component';
+import {HomeComponent} from './features/home.component';
+import {CollectionComponent} from './features/collection/collection.component';
+import {SnapshotComponent} from './features/snapshot/snapshot.component';
+import {ProductComponent} from './features/product/product.component';
 
 export const routes: Routes = [
-  { path: '', component: DashboardComponent, pathMatch: 'full' },
-  { path: 'lazy', loadChildren: './features/lazy/index#LazyModule' },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'collection', component: CollectionComponent, pathMatch: 'full' },
+  { path: 'snapshot', component: SnapshotComponent, pathMatch: 'full' },
+  { path: 'product', component: ProductComponent, pathMatch: 'full' },
+  // { path: 'lazy', loadChildren: './features/lazy/index#LazyModule' },
   { path: '**', component: NotFound404Component }
 ];
