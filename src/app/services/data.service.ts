@@ -42,6 +42,17 @@ export class PhoneDataService extends RequestBase {
       .catch(this.handleError);
   }
   /**
+   * 获取用户收藏列表
+   * @method listCollectionByUser
+   */
+  listCollectionByUser(data): Promise<Result> {
+    return this.http.post(this.baseUrl + 'shared/collection/listCollectionByUser', JSON.stringify(data), this.options)
+      .toPromise()
+      .then((res) => res.json() as Result)
+      .catch(this.handleError);
+  }
+
+  /**
    * 获取收藏数据
    * @method listCollectionByIds
    * @param {ids} collection的Id数组

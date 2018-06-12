@@ -35,7 +35,7 @@
     </div>
     <div class="example-list">
       <div class="example-item" *ngFor="let snapshot of snapshotList">
-        <img src="{{snapShotUrl + (snapshot && snapshot.uploadedImage && snapshot.uploadedImage.imgUrl)}}" alt="" class="example-img">
+        <img src="{{snapShotUrl + (snapshot && snapshot.uploadedImage && snapshot.uploadedImage.imgUrl)}}.png" alt="" class="example-img">
         <div class="example-name">{{snapshot.name}}</div>
       </div>
     </div>

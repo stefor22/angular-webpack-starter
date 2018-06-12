@@ -12,20 +12,26 @@
     <div class="main-container">
       <div class="top-nav">
         <div class="room-nav" [ngClass]="showRoom ? 'active': ''" (click)="toggleRoom($event)">
-          <span>客餐厅</span>
+          <span>{{currentRoom.name}}</span>
           <img src="../../../assets/img/down@2x.png" alt="" class="nav-img">
           <div class="slide-menu" *ngIf="showRoom" [@show2hidden]="showRoom">
-            <div class="slide-item active">客餐厅</div>
-            <div class="slide-item">客餐厅</div>
+            <div class="slide-item"
+                 *ngFor="let room of roomList"
+                 (click)="selectRoom(room)"
+                 [ngClass]="currentRoom.name === room.name ? 'active': ''">{{room.name}}
+            </div>
           </div>
         </div>
         <div class="line"></div>
         <div class="room-nav" [ngClass]="showStyle ? 'active': ''" (click)="toggleStyle($event)">
-          <span>客餐厅</span>
+          <span>{{currentStyle.name}}</span>
           <img src="../../../assets/img/down@2x.png" alt="" class="nav-img">
           <div class="slide-menu" *ngIf="showStyle" [@show2hidden]="showStyle">
-            <div class="slide-item active">客餐厅</div>
-            <div class="slide-item">客餐厅</div>
+            <div class="slide-item"
+                 *ngFor="let style of styleList"
+                 (click)="selectStyle(style)"
+                 [ngClass]="currentStyle.name === style.name ? 'active': ''">{{style.name}}
+            </div>
           </div>
         </div>
       </div>

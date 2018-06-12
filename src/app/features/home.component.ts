@@ -8,7 +8,7 @@ import {
   SwiperCoverflowEffectInterface,
 } from 'ngx-swiper-wrapper';
 import {PhoneDataService} from '../services/data.service';
-import {collectionIds, snapshotIds} from './ids.data';
+import {collectionIds, snapshotIds} from './all.data';
 
 
 // 3D 切换效果参数设置
