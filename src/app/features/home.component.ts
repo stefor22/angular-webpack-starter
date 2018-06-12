@@ -30,7 +30,7 @@ export class HomeComponent implements OnDestroy, OnInit {
   config: SwiperConfigInterface;
   private collectionList: any[] = [];
   private snapshotList: any[] = [];
-  public snapShotUrl = '' || 'https://vr.wecareroom.com/';
+  public snapShotUrl = '' || 'https://img.wecareroom.com/';
 
   constructor(
     private store: Store<AppState>,

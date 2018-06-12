@@ -37,7 +37,7 @@
       </div>
       <div class="item-list">
         <div class="item-box" *ngFor="let collect of collectionList">
-          <img src="{{snapShotUrl + (snapshot && snapshot.uploadedImage && snapshot.uploadedImage.imgUrl)}}.png" alt="" class="item-img">
+          <img src="{{snapShotUrl + (collect && collect.uploadedImage && collect.uploadedImage.imgUrl)}}.png" alt="" class="item-img">
           <div class="item-title">
             <div class="name">{{collect.panoScene.name}}</div>
             <div class="tags">
