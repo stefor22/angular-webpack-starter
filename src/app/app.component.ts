@@ -7,6 +7,9 @@ import { views } from './app-nav-views';
 import { MOBILE } from './services/constants';
 
 import * as fromRoot from './reducers';
+import {PhoneDataService} from './services/data.service';
+import {Sha1} from './services/sha1';
+import {CookieService} from 'ngx-cookie';
 
 @Component({
   selector: 'my-app',
@@ -19,17 +22,57 @@ export class AppComponent implements OnInit {
   sideNavMode = MOBILE ? 'over' : 'side';
   views = views;
   private currentRoute: string;
+  private loginSuccess: boolean = false;
 
   constructor(
     private cache: TransferState,
     public route: ActivatedRoute,
     public router: Router,
-    public store: Store<fromRoot.AppState>
+    public store: Store<fromRoot.AppState>,
+    private dataService: PhoneDataService,
+    private sha1: Sha1,
+    public cookieService: CookieService,
   ) { }
 
   ngOnInit() {
-    // this.cache.set('cached', true);
     this.currentRoute = window.location.pathname.replace(/^\//, '');
+
+    let phone = '13787166496';
+    let password = '12345678';
+
+    this.getStatus().then(login => {
+      this.loginSuccess = login;
+      console.log('app on init, login: ', this.loginSuccess)
+      if (login) {
+        return console.log('已登陆');
+      } else {
+        this.dataService.login(phone, this.sha1.Sha1(password), false)
+          .then((res) => {
+            if (res.status.error === 0) {
+              this.getStatus();
+              if (res.status.message !== '普通登陆' && ENV === 'development') {
+                this.cookieService.put('SHRIOSESSIONID', res.result);
+              }
+            } else {
+              console.error('登陆错误', res);
+            }
+          });
+      }
+    });
+  }
+  getStatus() {
+    return this.dataService.getLoginStatus()
+      .then((loginRes) => {
+        if (loginRes.status.error === 0) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        return false;
+      });
   }
 
 }

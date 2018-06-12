@@ -1,21 +1,21 @@
-import { Injectable } from '@angular/core';
-import { Headers } from '@angular/http';
-import { HttpClient, HttpHeaders, HttpInterceptor } from '@angular/common/http';
+import {Headers, RequestOptions} from '@angular/http';
+import {Http} from '@angular/http';
+// import 'rxjs/add/operator/toPromise';
 
-@Injectable()
 export class RequestBase {
-  headers = new HttpHeaders();
-  noPreFlightHeaders = new HttpHeaders();
-  options = {
-    headers: this.headers,
-    withCredentials: true
-  };
-  optionsNoPre = {
-    headers: this.noPreFlightHeaders,
-    withCredentials: true
-  };
-  constructor(public http: HttpClient) {
+  headers = new Headers();
+  options =  new RequestOptions({ headers: this.headers, withCredentials: ENV === 'development' });
+  baseUrl = '';
+  constructor(
+  ) {
     this.headers.append('Content-Type', 'application/json');
-    this.noPreFlightHeaders.append('Content-Type', 'text/plain');
+    this.baseUrl = (ENV === 'development') ? 'http://vr.forwoodsup.cn/api/' :
+      (ENV === 'zxxtest') ? 'http://zxxtest.forwoodsup.cn/api/' : 'http://kentest.wecareroom.com/api/';
+  }
+
+
+  public handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
   }
 }

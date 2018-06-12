@@ -19,17 +19,9 @@
       <div class="header-more" [routerLink]="'collection'">查看更多>></div>
     </div>
     <div class="example-list">
-      <div class="example-item">
-        <img src="../../assets/img/banner2.jpg" alt="" class="example-img">
-        <div class="example-name">123456789sadsaasdsadsadasssssssssssssssss</div>
-      </div>
-      <div class="example-item">
-        <img src="" alt="" class="example-img">
-        <div class="example-name"></div>
-      </div>
-      <div class="example-item">
-        <img src="" alt="" class="example-img">
-        <div class="example-name"></div>
+      <div class="example-item" *ngFor="let collect of collectionList">
+        <img src="http://image.wecareroom.com/upload/immersive/vrscene/thumbnail/{{collect && collect.panoScene && collect.panoScene.id}}.jpg" alt="" class="example-img">
+        <div class="example-name">{{collect.userName}}</div>
       </div>
     </div>
   </div>
@@ -42,17 +34,9 @@
       <div class="header-more" [routerLink]="'snapshot'">查看更多>></div>
     </div>
     <div class="example-list">
-      <div class="example-item">
-        <img src="../../assets/img/banner2.jpg" alt="" class="example-img">
-        <div class="example-name">123456789sadsaasdsadsadasssssssssssssssss</div>
-      </div>
-      <div class="example-item">
-        <img src="" alt="" class="example-img">
-        <div class="example-name"></div>
-      </div>
-      <div class="example-item">
-        <img src="" alt="" class="example-img">
-        <div class="example-name"></div>
+      <div class="example-item" *ngFor="let snapshot of snapshotList">
+        <img src="{{snapShotUrl + (snapshot && snapshot.uploadedImage && snapshot.uploadedImage.imgUrl)}}" alt="" class="example-img">
+        <div class="example-name">{{snapshot.name}}</div>
       </div>
     </div>
   </div>

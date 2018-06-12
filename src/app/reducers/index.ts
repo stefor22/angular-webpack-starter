@@ -13,7 +13,6 @@ import { storeLogger } from 'ngrx-store-logger';
 import { routerReducer, RouterReducerState, RouterStateSerializer } from '@ngrx/router-store';
 import * as fromRouter from '@ngrx/router-store';
 
-import * as fromUser from '../user/user.reducer';
 
 export interface RouterStateUrl {
   url: string;
@@ -23,25 +22,16 @@ export interface RouterStateUrl {
 
 const modules = {
   'router': routerReducer,
-  'user': fromUser.userReducer
 };
 
 export interface AppState {
   router: fromRouter.RouterReducerState<RouterStateUrl>;
-  user: fromUser.UserState;
 }
 
 export const syncReducers = {
   router: routerReducer,
-  user: fromUser.userReducer
 };
 
-export const getUserState = createFeatureSelector<fromUser.UserState>('user');
-
-export const getUserLoaded = createSelector(
-  getUserState,
-  fromUser.getLoaded
-);
 
 export class CustomSerializer implements RouterStateSerializer<RouterStateUrl> {
   serialize(routerState: RouterStateSnapshot): RouterStateUrl {

@@ -6,8 +6,10 @@ import { Store } from '@ngrx/store';
 import {
   SwiperConfigInterface,
   SwiperCoverflowEffectInterface,
-  SwiperNavigationInterface
 } from 'ngx-swiper-wrapper';
+import {PhoneDataService} from '../services/data.service';
+import {collectionIds, snapshotIds} from './ids.data';
+
 
 // 3D 切换效果参数设置
 const coverflowEffectConfig: SwiperCoverflowEffectInterface = {
@@ -26,9 +28,13 @@ const coverflowEffectConfig: SwiperCoverflowEffectInterface = {
 
 export class HomeComponent implements OnDestroy, OnInit {
   config: SwiperConfigInterface;
+  private collectionList: any[] = [];
+  private snapshotList: any[] = [];
+  public snapShotUrl = '' || 'https://vr.wecareroom.com/';
 
   constructor(
     private store: Store<AppState>,
+    private dataService: PhoneDataService,
   ) {
   }
 
@@ -54,8 +60,57 @@ export class HomeComponent implements OnDestroy, OnInit {
         el: '.swiper-pagination',
       },
     };
+    this.getCollectionByIdList(collectionIds.slice(0, 6));
+    this.getSnapshotByIdList(snapshotIds.slice(0, 6));
   }
 
+  getCollectionByIdList(list) {
+    list.forEach(id => {
+      this.dataService.getCollectionById(id).then(res => {
+        if (res.status.error === 0) {
+          console.log(typeof this.collectionList)
+          this.collectionList.push(res.result);
+        }
+      })
+    });
+  }
+  getSnapshotByIdList(list) {
+    list.forEach(id => {
+      this.dataService.getCollectionById(id).then(res => {
+        if (res.status.error === 0) {
+          let snap = res.result;
+          snap.name = `[${snap.panoScene.tone} - ${this.judgePos(snap.panoScene.position)}]  ${snap.panoScene.name}`;
+          console.log(snap.panoScene.position);
+          this.snapshotList.push(res.result);
+
+        }
+      })
+    });
+  }
+  judgePos(eng) {
+    let name;
+    switch (eng) {
+      case 'kitchen':
+        name = '厨房'
+        break;
+      case 'bedroom':
+        name = '卧室'
+        break;
+      case 'livingroom':
+        name = '客厅'
+        break;
+      case 'studyroom':
+        name = '书房'
+        break;
+      default:
+        name = '其他';
+        break;
+    }
+    return name;
+  }
+  onScroll() {
+    console.log('asdssssssssssssssssssssssssssss')
+  }
   ngOnDestroy() {
   }
 }

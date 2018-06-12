@@ -1,6 +1,5 @@
 import { Response } from '@angular/http';
 import { Action } from '@ngrx/store';
-import { Logout, LogoutSuccess } from '../../user/user.actions';
 
 export enum LazyActionTypes {
   Decrement = '[Lazy] Decrement',

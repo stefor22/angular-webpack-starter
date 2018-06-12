@@ -9,7 +9,6 @@ import { TransferHttpModule } from '../modules/transfer-http/transfer-http.modul
 
 import { DEV_REDUCERS, syncReducers, resetOnLogout, AppState } from './reducers';
 import { RouterEffects } from './effects/router';
-import { UserEffects } from './user/user.effects';
 
 export const metaReducers: MetaReducer<AppState>[] = ENV === 'development' ?
   [...DEV_REDUCERS, resetOnLogout] : [resetOnLogout];
@@ -17,7 +16,6 @@ export const metaReducers: MetaReducer<AppState>[] = ENV === 'development' ?
 export const APP_IMPORTS = [
   EffectsModule.forRoot([
     RouterEffects,
-    UserEffects
   ]),
   MaterialModule,
   ReactiveFormsModule,
