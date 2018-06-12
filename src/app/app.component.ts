@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TransferState } from '../modules/transfer-state/transfer-state';
 import { Store, select } from '@ngrx/store';
 
-import { views } from './app-nav-views';
 import { MOBILE } from './services/constants';
 
 import * as fromRoot from './reducers';
@@ -13,15 +12,13 @@ import {CookieService} from 'ngx-cookie';
 
 @Component({
   selector: 'my-app',
-  styleUrls: ['main.scss', './app.component.scss'],
+  styleUrls: ['main.scss', './app.component.scss', '../assets/scss/global.scss'],
   templateUrl: './app.component.html',
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
   mobile = MOBILE;
   sideNavMode = MOBILE ? 'over' : 'side';
-  views = views;
-  private currentRoute: string;
   private loginSuccess: boolean = false;
 
   constructor(
@@ -35,7 +32,6 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.currentRoute = window.location.pathname.replace(/^\//, '');
 
     let phone = '13787166496';
     let password = '12345678';

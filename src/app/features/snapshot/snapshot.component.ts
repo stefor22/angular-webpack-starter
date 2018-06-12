@@ -108,10 +108,12 @@ export class SnapshotComponent implements OnDestroy, OnInit {
     window.history.back();
   }
   toggleRoom(e) {
+    this.showStyle = false;
     this.showRoom = !this.showRoom;
     this.prevent(e);
   }
   toggleStyle(e) {
+    this.showRoom = false;
     this.showStyle = !this.showStyle;
     this.prevent(e);
   }
