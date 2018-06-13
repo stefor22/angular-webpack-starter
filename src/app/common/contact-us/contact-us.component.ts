@@ -34,7 +34,7 @@ export class ContactUsComponent implements OnDestroy, OnInit {
   public connect: any = [
     {
       imgSrc: 'assets/img/main/footer/tel.png',
-      content: '电话: 17603021617'
+      content: '电话: 15323894017'
     },
     {
       imgSrc: 'assets/img/main/footer/address.png',

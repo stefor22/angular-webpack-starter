@@ -38,7 +38,6 @@ export class AppComponent implements OnInit {
 
     this.getStatus().then(login => {
       this.loginSuccess = login;
-      console.log('app on init, login: ', this.loginSuccess)
       if (login) {
         return console.log('已登陆');
       } else {
@@ -52,14 +51,14 @@ export class AppComponent implements OnInit {
             } else {
               console.error('登陆错误', res);
             }
-          });
+          }).catch(err => console.error(err));
       }
     });
   }
   getStatus() {
     return this.dataService.getLoginStatus()
-      .then((loginRes) => {
-        if (loginRes.status.error === 0) {
+      .then((res) => {
+        if (res.status.error === 0) {
           return true;
         } else {
           return false;

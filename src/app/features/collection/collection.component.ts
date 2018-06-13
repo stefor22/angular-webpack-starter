@@ -84,6 +84,8 @@ export class CollectionComponent implements OnDestroy, OnInit {
           this.collectionList = this.collectionList.concat(res.result);
         }
       }
+    }).catch(err => {
+      console.error(err)
     });
   }
 
