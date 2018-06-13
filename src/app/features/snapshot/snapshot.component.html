@@ -36,14 +36,14 @@
         </div>
       </div>
       <div class="item-list">
-        <div class="item-box" *ngFor="let collect of collectionList">
-          <img src="{{snapShotUrl + (collect && collect.uploadedImage && collect.uploadedImage.imgUrl)}}.png" alt="" class="item-img">
+        <div class="item-box" *ngFor="let snapshot of collectionList">
+          <img src="https://wecareroom.com/{{snapshot && snapshot.uploadedImage && snapshot.uploadedImage.imgUrl}}_X0.2.png" alt="" class="item-img">
           <div class="item-title">
-            <div class="name">{{collect.panoScene.name}}</div>
+            <div class="name">{{snapshot.panoScene.name}}</div>
             <div class="tags">
-              <span>{{collect.fbottomCode}}</span>
-              <span>{{collect.panoScene.position | sceneName}}</span>
-              <span>{{collect.panoScene.tone}}</span>
+              <span>{{snapshot.fbottomCode}}</span>
+              <span>{{snapshot.panoScene.position | sceneName}}</span>
+              <span>{{snapshot.panoScene.tone}}</span>
             </div>
           </div>
         </div>

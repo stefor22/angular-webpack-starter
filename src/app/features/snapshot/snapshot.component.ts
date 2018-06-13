@@ -50,8 +50,6 @@ export class SnapshotComponent implements OnDestroy, OnInit {
   private currentRoom = {name: '全部', value: ''};
   private currentStyle = {name: '全部', value: ''};
 
-  public snapShotUrl = '' || 'https://img.wecareroom.com/';
-
   constructor(
     private dataService: PhoneDataService,
   ) {
